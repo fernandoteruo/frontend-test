@@ -1,0 +1,35 @@
+<div class="container-fluid" ng-controller="SearchController as ctrl">
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="input-group">
+				<label class="input-group-addon">Title</label>
+				<input type="text" class="form-control" ng-model="ctrl.title">
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="input-group">
+				<label class="input-group-addon">Director</label>
+				<input type="text" class="form-control" ng-model="ctrl.director">
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="input-group">
+				<label class="input-group-addon">Actor</label>
+				<input type="text" class="form-control" ng-model="ctrl.actor">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div ng-repeat="obj in ctrl.result">
+			{{ obj.category }}
+			{{ obj.director }}
+			{{ obj.poster }}
+			{{ obj.rating }}
+			{{ obj.release_year }}
+			{{ obj.show_cast }}
+			{{ obj.runtime }}
+			{{ obj.summary }}
+			{{ obj.show_title }}
+		</div>
+	</div>
+</div>

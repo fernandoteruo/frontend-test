@@ -60,16 +60,16 @@
 	}
 
 	function watchJs() {
-		var watcher = gulp.watch([srcRoot + "../*.js"]);
-		watcher.on("all", function() {
+		var watcher = gulp.watch([srcRoot + "scripts/**/*.js"]);
+		watcher.on("all", function(event, path, stats) {
 			util.log("Watching changes - File: " + path + " | Event: " + event);
 			jsMinify();
 		});
 	}
 
 	function watchSass() {
-		var watcher = gulp.watch([srcRoot + "../*.scss"]);
-		watcher.on("all", function() {
+		var watcher = gulp.watch([srcRoot + "sass/**/*.scss"]);
+		watcher.on("all", function(event, path, stats) {
 			util.log("Watching changes - File: " + path + " | Event: " + event);
 			sassCompileMinify();
 		});

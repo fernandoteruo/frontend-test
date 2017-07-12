@@ -1,0 +1,88 @@
+@import '../common/width';
+@import '../common/basic';
+
+@mixin sidebar-colors($color, $bg){
+	color: $color;
+	background-color: $bg;
+	border-style: none;
+}
+
+body, html {
+	font: $font-stack;
+	height: 100%;
+}
+
+nav.sidebar{
+	@include sidebar-colors($grey-blue-3, $grey-blue-1);
+	@media (min-width: $tablet-size-2) {
+        width: $sidebar-width;
+        height: 100%;
+        z-index: 8000;
+        float: left;
+        position: fixed;
+        margin-left: $margin-left-1;
+
+        li {
+        	width: 100%;
+        }
+	}
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+	background-color: $grey-blue-3;
+	
+	border: none;
+	.navbar-header {
+		height: $header-height;
+		@media (min-width: $tablet-size-2) {
+			background-color: $grey-blue-2;
+		}
+		.collapse-button {
+			float: right;
+			display: block;
+			color: $white-1;
+			height: $header-height;
+			width: $header-height;
+			font-size: 2em;
+			padding-top: 10px;
+			@media (min-width: $tablet-size-2) {
+				display: none;
+			}
+		}
+		a:focus, a:hover {
+			outline: none;
+			outline-offset: 0;
+			text-decoration: none;
+		}
+		.navbar-brand {
+			color: $white-1;
+			background-color: $grey-blue-2;
+			@media (min-width: $tablet-size-2) {
+				background-color: transparent;
+				width: 100%;
+				margin-left: $margin-left-2;
+			}
+		}
+	}
+	.nav.navbar-nav {
+		width: 80%;
+		display: inline;
+		li {
+			display: inline;
+			a {
+				color: $white-1;
+				float: left;
+			}
+		}
+	}
+}
+
+#header {
+	@include sidebar-colors($white-1, $grey-blue-3);
+    display: none;
+
+    @media (min-width: $tablet-size-2) {
+    	display: block;
+    	height: $header-height;
+    }
+}

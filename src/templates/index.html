@@ -7,6 +7,8 @@
 	<title>Netflix Roulette</title>
 
 	<link href="bootstrap.min.css" rel="stylesheet">
+	<link href="header.min.css" rel="stylesheet">
+	<link href="index.min.css" rel="stylesheet">
 </head>
 <body ng-app="netflixRouletteApp" class="container-fluid">
 	<header>
@@ -14,7 +16,7 @@
 		</div>
 	</header>
 	<main>
-		<div ng-view role="main" class="view">
+		<div ng-view role="main" class="view-container">
 		</div>
 	</main>
 
@@ -24,5 +26,8 @@
 	<script src="angular-route.min.js"></script>
 
 	<script src="app.module.min.js"></script>
+	<script src="app.routes.min.js"></script>
+	<script src="search.controller.min.js"></script>
+	<script src="search.factory.min.js"></script>
 </body>
 </html>
