@@ -51,6 +51,16 @@
 		})).pipe(flatten()).pipe(gulp.dest(dstPath));
 	}
 
+	function configFiles() {
+		var config = gulp.src(["config/" + options.env + "/**/*.js"]).pipe(jsMin()).pipe(rename(renameOptions)).pipe(flatten()).pipe(gulp.dest(dstPath));
+		
+		if (options.env === "tst") {
+			var data = gulp.src(["data/**/*"]).pipe(flatten()).pipe(gulp.dest(dstPath));
+			return merge(config, data);
+		}
+		return config;
+	}
+
 	function watchHtml() {
 		var watcher = gulp.watch([srcRoot + "templates/**/*.html"]);
 		watcher.on("all", function(event, path, stats) {
@@ -85,10 +95,13 @@
 			basePath + "jquery/dist/**/jquery.min.js",
 			basePath + "jquery/dist/**/jquery.min.js.map",
 			basePath + "bootstrap/dist/js/bootstrap.min.js",
+			basePath + "owl.carousel/dist/owl.carousel.min.js",
 		]).pipe(flatten()).pipe(gulp.dest(dstPath));
 		var css = gulp.src([
 			basePath + "bootstrap/dist/css/bootstrap.min.css",
 			basePath + "bootstrap/dist/css/bootstrap.min.css.map",
+			basePath + "owl.carousel/dist/assets/owl.carousel.min.css",
+			basePath + "owl.carousel/dist/assets/owl.theme.default.min.css",
 		]).pipe(replace("../fonts/", "")).pipe(gulp.dest(dstPath));
 		var fonts = gulp.src([basePath + "bootstrap/dist/fonts/*"]).pipe(flatten()).pipe(gulp.dest(dstPath));
 
@@ -98,7 +111,7 @@
 	function run() {
 		return gulp.src(dstPath).pipe(shell("http-server -p 3000 " + dstPath));
 	}
-	gulp.task("build", gulp.series(clean, gulp.parallel(handleDependencies, sassCompileMinify, jsMinify, htmlMinify)));
+	gulp.task("build", gulp.series(clean, gulp.parallel(handleDependencies, sassCompileMinify, jsMinify, htmlMinify, configFiles)));
 	gulp.task("watch", gulp.parallel(watchHtml, watchJs, watchSass));
 	gulp.task("start", gulp.series("build", gulp.parallel("watch", run)));
 })();

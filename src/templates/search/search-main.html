@@ -1,35 +1,50 @@
+<link href="search.min.css" rel="stylesheet">
 <div class="container-fluid" ng-controller="SearchController as ctrl">
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<div class="input-group">
-				<label class="input-group-addon">Title</label>
-				<input type="text" class="form-control" ng-model="ctrl.title">
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="input-group">
-				<label class="input-group-addon">Director</label>
-				<input type="text" class="form-control" ng-model="ctrl.director">
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="input-group">
-				<label class="input-group-addon">Actor</label>
-				<input type="text" class="form-control" ng-model="ctrl.actor">
+				<input on-enter="ctrl.search()" type="text" class="form-control" ng-model="ctrl.searchParam" placeholder="Search by title, director or actor/actress ...">
+				<label class="input-group-addon" ng-click="ctrl.search()" >
+					GO!
+				</label>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div ng-repeat="obj in ctrl.result">
-			{{ obj.category }}
-			{{ obj.director }}
-			{{ obj.poster }}
-			{{ obj.rating }}
-			{{ obj.release_year }}
-			{{ obj.show_cast }}
-			{{ obj.runtime }}
-			{{ obj.summary }}
-			{{ obj.show_title }}
+		<div class="col-xs-12">
+			<div class="owl-carousel owl-theme" movie-carousel data="ctrl.result" destroy="ctrl.destroyCarousel">
+				<div ng-repeat="obj in ctrl.result">
+					<div class="thumbnail" style="background: url({{ obj.poster }}) center no-repeat">
+						<h4>{{ obj.show_title }}</h4>
+						<i ng-click="ctrl.showMore($index)" class="glyphicon glyphicon-chevron-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 panel-container" ng-show="ctrl.showDetails">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					{{  ctrl.detail.show_title }}
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 detail-summary">
+							<span>{{ ctrl.detail.summary }}</span>
+						</div>
+						<div class="col-xs-6 detail-info">
+							<p>Director: {{ ctrl.detail.director }}</p>
+							<p>Year: {{ ctrl.detail.release_year }}</p>
+						</div>
+						<div class="col-xs-6 detail-info">
+							<p>Duration: {{ ctrl.detail.runtime }}</p>
+							<p>Category: {{ ctrl.detail.category }}</p>
+						</div>
+						<div class="col-xs-12 detail-cast">
+							<small>Cast: {{ ctrl.detail.show_cast }}</small
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
