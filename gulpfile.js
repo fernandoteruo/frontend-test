@@ -94,14 +94,11 @@
 			basePath + "angular-route/angular-route.min.js.map",
 			basePath + "jquery/dist/**/jquery.min.js",
 			basePath + "jquery/dist/**/jquery.min.js.map",
-			basePath + "bootstrap/dist/js/bootstrap.min.js",
-			basePath + "owl.carousel/dist/owl.carousel.min.js",
+			basePath + "bootstrap/dist/js/bootstrap.min.js"
 		]).pipe(flatten()).pipe(gulp.dest(dstPath));
 		var css = gulp.src([
 			basePath + "bootstrap/dist/css/bootstrap.min.css",
-			basePath + "bootstrap/dist/css/bootstrap.min.css.map",
-			basePath + "owl.carousel/dist/assets/owl.carousel.min.css",
-			basePath + "owl.carousel/dist/assets/owl.theme.default.min.css",
+			basePath + "bootstrap/dist/css/bootstrap.min.css.map"
 		]).pipe(replace("../fonts/", "")).pipe(gulp.dest(dstPath));
 		var fonts = gulp.src([basePath + "bootstrap/dist/fonts/*"]).pipe(flatten()).pipe(gulp.dest(dstPath));
 

@@ -9,21 +9,21 @@
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	display: block;
 }
-
-.owl-carousel.owl-theme {
-	margin-top: 10px;
-}
-
+$thumbnail-height: 405px;
 .thumbnail {
-	height: 405px;
+	height: $thumbnail-height;
 	border: none;
-	h4 {
-		@include thumbnail();
-		margin-top: 300px;
+
+	img {
+		height: $thumbnail-height;
+		border: 1px solid black;
 	}
-	i {
-		@include thumbnail();
-		margin-top: -10px;
+	figcaption {
+		text-align: center;
+		margin-top: -45px;
+		font-size: 3em;
+		color: #fff;
+		text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	}
 }
 

@@ -1,0 +1,25 @@
+<div class="col-xs-12 panel-container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>{{  $ctrl.title }}<span ng-click="$ctrl.addToFavorites()" class="glyphicon glyphicon-heart pull-right"></span></h4>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-12 detail-summary">
+					<span>{{ $ctrl.summary }}</span>
+				</div>
+				<div class="col-xs-6 detail-info">
+					<p>Director: {{ $ctrl.director }}</p>
+					<p>Year: {{ $ctrl.year }}</p>
+				</div>
+				<div class="col-xs-6 detail-info">
+					<p>Duration: {{ $ctrl.runtime }}</p>
+					<p>Category: {{ $ctrl.category }}</p>
+				</div>
+				<div class="col-xs-12 detail-cast">
+					<small>Cast: {{ $ctrl.cast }}</small>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

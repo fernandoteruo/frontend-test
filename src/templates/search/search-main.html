@@ -10,41 +10,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<div class="owl-carousel owl-theme" movie-carousel data="ctrl.result" destroy="ctrl.destroyCarousel">
-				<div ng-repeat="obj in ctrl.result">
-					<div class="thumbnail" style="background: url({{ obj.poster }}) center no-repeat">
-						<h4>{{ obj.show_title }}</h4>
-						<i ng-click="ctrl.showMore($index)" class="glyphicon glyphicon-chevron-down"></i>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-8 col-sm-offset-2 panel-container" ng-show="ctrl.showDetails">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					{{  ctrl.detail.show_title }}
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-12 detail-summary">
-							<span>{{ ctrl.detail.summary }}</span>
-						</div>
-						<div class="col-xs-6 detail-info">
-							<p>Director: {{ ctrl.detail.director }}</p>
-							<p>Year: {{ ctrl.detail.release_year }}</p>
-						</div>
-						<div class="col-xs-6 detail-info">
-							<p>Duration: {{ ctrl.detail.runtime }}</p>
-							<p>Category: {{ ctrl.detail.category }}</p>
-						</div>
-						<div class="col-xs-12 detail-cast">
-							<small>Cast: {{ ctrl.detail.show_cast }}</small
-						</div>
-					</div>
-				</div>
-			</div>
+	<div class="row" search-detail="ctrl.detail" show="ctrl.show" index="ctrl.index">
+		<div ng-repeat="obj in ctrl.result">
+			<figure class="col-xs-12 col-sm-6 col-md-4 col-lg-3 thumbnail">
+				<img ng-src="{{ obj.poster }}" alt="{{ obj.show_title }}">
+				<figcaption><span ng-click="ctrl.showMore($index)" class="glyphicon glyphicon-chevron-down"></span></figcaption>
+			</figure>
 		</div>
 	</div>
 </div>

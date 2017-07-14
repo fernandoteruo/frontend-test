@@ -11,8 +11,7 @@
     "angular-route": "^1.6.5",
     "bootstrap": "^3.3.7",
     "gulp-replace": "^0.6.1",
-    "jquery": "^3.2.1",
-    "owl.carousel": "^2.2.0"
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "del": "^2.2.2",
