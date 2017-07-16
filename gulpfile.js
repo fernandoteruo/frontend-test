@@ -123,6 +123,7 @@
 	function run() {
 		return gulp.src(dstPath).pipe(shell("http-server -p 3000 " + dstPath));
 	}
+
 	gulp.task("build", gulp.series(clean, gulp.parallel(handleDependencies, sassCompileMinify, jsMinify, htmlMinify, configFiles, images)));
 	gulp.task("watch", gulp.parallel(watchHtml, watchJs, watchSass));
 	gulp.task("start", gulp.series("build", gulp.parallel("watch", run)));
