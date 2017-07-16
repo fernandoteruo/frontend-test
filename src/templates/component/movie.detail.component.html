@@ -1,7 +1,8 @@
+<link href="movie.detail.component.min.css" rel="stylesheet">
 <div class="col-xs-12 panel-container">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h4>{{  $ctrl.title }}<span ng-click="$ctrl.addToFavorites()" class="glyphicon glyphicon-heart pull-right"></span></h4>
+			<h4>{{  $ctrl.title }}<i ng-if="$ctrl.showAddToFavorites" ng-click="$ctrl.addToFavorites()" title="Add to favorites" class="glyphicon glyphicon-heart pull-right" style="color: {{ $ctrl.color }}"></i></h4>
 		</div>
 		<div class="panel-body">
 			<div class="row">

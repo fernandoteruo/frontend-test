@@ -1,0 +1,7 @@
+<link href="favorites.min.css" rel="stylesheet">
+<div class="container-fluid" ng-controller="FavoritesController as ctrl">
+	<div ng-if="ctrl.noFavorites" class="alert alert-warning" role="alert">
+		Você ainda não favoritou nenhum filme
+	</div>
+	<movie-list movies="ctrl.movies"></movie-list>
+</div>

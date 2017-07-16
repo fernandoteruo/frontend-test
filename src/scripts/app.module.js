@@ -1,4 +1,1 @@
-(function() {
-	"use strict";
-	angular.module("netflixRouletteApp", ["ngRoute"]);
-})();
+angular.module("netflixRouletteApp", ["ngRoute"]);

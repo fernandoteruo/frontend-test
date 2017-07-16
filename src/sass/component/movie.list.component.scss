@@ -16,28 +16,18 @@ $thumbnail-height: 405px;
 
 	img {
 		height: $thumbnail-height;
-		border: 1px solid black;
 	}
 	figcaption {
-		text-align: center;
 		margin-top: -45px;
-		font-size: 3em;
+		text-align: center;
 		color: #fff;
 		text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+		.glyphicon {
+			font-size: 3em;
+		}
+		.movie-title {
+			margin-top: -100px;
+			font-size: 1.5em;
+		}
 	}
-}
-
-.panel-container {
-	transition: all 1s ease;
-}
-.detail-summary {
-	text-align: justify
-}
-.detail-info {
-	border-top: 1px dashed black;
-	margin-top: 15px;
-}
-.detail-cast {
-	border-top: 1px dashed black;
-	margin-top: 15px;
 }

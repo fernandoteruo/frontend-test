@@ -1,0 +1,25 @@
+.panel-container {
+	transition: all 1s ease;
+
+	.glyphicon.glyphicon-heart {
+		top: 0;
+		font-size: 2em;
+		margin-top: -7px;
+
+		:hover {
+			cursor: pointer;
+		}
+	}
+
+	.detail-summary {
+		text-align: justify
+	}
+	.detail-info {
+		border-top: 1px dashed black;
+		margin-top: 15px;
+	}
+	.detail-cast {
+		border-top: 1px dashed black;
+		margin-top: 15px;
+	}
+}

@@ -13,6 +13,8 @@
 	var util = require("gulp-util");
 	var merge = require("merge-stream");
 	var replace = require("gulp-replace");
+	var concat = require("gulp-concat");
+	var sourcemaps = require("gulp-sourcemaps");
 
 	var srcRoot = "src/";
 	var knownOptions = {
@@ -41,7 +43,14 @@
 	}
 
 	function jsMinify() {
-		return gulp.src([srcRoot + "scripts/**/*.js"]).pipe(jsMin()).pipe(rename(renameOptions)).pipe(flatten()).pipe(gulp.dest(dstPath));
+		return gulp.src([
+			srcRoot + "scripts/app.module.js",
+			srcRoot + "scripts/**/*.routes.js",
+			srcRoot + "scripts/**/*.component.js",
+			srcRoot + "scripts/**/*.directive.js",
+			srcRoot + "scripts/**/*.factory.js",
+			srcRoot + "scripts/**/*.controller.js"
+			]).pipe(sourcemaps.init()).pipe(concat("app.js")).pipe(jsMin()).pipe(rename(renameOptions)).pipe(sourcemaps.write(".")).pipe(flatten()).pipe(gulp.dest(dstPath));
 	}
 
 	function htmlMinify() {
@@ -49,6 +58,12 @@
 			collapseWhitespace: true,
 			removeComments: true
 		})).pipe(flatten()).pipe(gulp.dest(dstPath));
+	}
+
+	function images() {
+		return gulp.src([srcRoot + "img/**/*.png", 
+			srcRoot + "img/**/*.jpg",
+			srcRoot + "img/**/*.jpeg"]).pipe(flatten()).pipe(gulp.dest(dstPath));
 	}
 
 	function configFiles() {
@@ -108,7 +123,7 @@
 	function run() {
 		return gulp.src(dstPath).pipe(shell("http-server -p 3000 " + dstPath));
 	}
-	gulp.task("build", gulp.series(clean, gulp.parallel(handleDependencies, sassCompileMinify, jsMinify, htmlMinify, configFiles)));
+	gulp.task("build", gulp.series(clean, gulp.parallel(handleDependencies, sassCompileMinify, jsMinify, htmlMinify, configFiles, images)));
 	gulp.task("watch", gulp.parallel(watchHtml, watchJs, watchSass));
 	gulp.task("start", gulp.series("build", gulp.parallel("watch", run)));
 })();

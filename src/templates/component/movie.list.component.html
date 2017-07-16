@@ -1,0 +1,11 @@
+<link href="movie.list.component.min.css" rel="stylesheet">
+<div class="row" movie-detail="$ctrl.detail" show="$ctrl.show" index="$ctrl.index" movies="$ctrl.movies">
+	<div class="thumbnail-container" ng-repeat="obj in $ctrl.movies">
+		<figure class="col-xs-12 col-sm-6 col-md-4 col-lg-3 thumbnail">
+			<img ng-src="{{ obj.poster }}" img-on-error="obj.show_title" alt="{{ obj.show_title }}">
+			<figcaption>
+				<span ng-click="$ctrl.showMore($index)" class="glyphicon glyphicon-chevron-down"></span>
+			</figcaption>
+		</figure>
+	</div>
+</div>
